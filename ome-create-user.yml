@@ -1,0 +1,21 @@
+---
+- hosts: ome
+  connection: local
+  name: Dell OpenManage Ansible User service.
+  gather_facts: False
+
+  collections:
+    - dellemc.openmanage
+      
+  tasks:
+  - name: Create user with required parameters.
+    ome_user:
+         hostname: "192.168.1.10"
+         username: "root"
+         password: "Calvin1@"
+         attributes:
+              UserName: "elad"
+              Password: "Calvin1@"
+              RoleId: "10"
+              Enabled: True
+

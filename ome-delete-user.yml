@@ -1,0 +1,17 @@
+---
+- hosts: ome
+  connection: local
+  name: Dell OpenManage Ansible User service.
+  gather_facts: False
+
+  collections:
+    - dellemc.openmanage
+      
+  tasks:
+  - name: delete existing user using name.
+    ome_user:
+         hostname: "192.168.1.10"
+         username: "root"
+         password: "Calvin1@"
+         state: "absent"
+         name: "elad"

@@ -1,0 +1,11 @@
+---
+- hosts: ome
+  connection: local
+  gather_facts: False
+
+  tasks:
+  - name: Retrieve basic inventory of all devices.
+    ome_device_info:
+            hostname: "192.168.1.10"
+            username: "root"
+            password: "Calvin1@"

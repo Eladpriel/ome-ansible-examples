@@ -1,0 +1,18 @@
+---
+- hosts: ome
+  connection: local
+  name: Dell OpenManage Ansible User service.
+  gather_facts: False
+
+  collections:
+    - dellemc.openmanage
+      
+  tasks:
+  - name: "Delete a VLAN"
+    ome_network_vlan:
+      hostname: "192.168.1.10"
+      username: "root"
+      password: "Calvin1@"
+      state: "absent"
+      name: "Ansible-test"
+    tags: delete_vlan
