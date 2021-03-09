@@ -14,9 +14,11 @@
       username: "{{ ome_user }}"
       password: "{{ ome_pass }}"
       state: present
-      name: "Ansible-test"
-      description: "VLAN desc"
-      type: "General Purpose (Bronze)"
-      vlan_minimum: 40
-      vlan_maximum: 60
+      name: "{{ item.name }}"
+      description: "{{ item.description }}"
+      type: "{{ item.type }}"
+      vlan_minimum: "{{ item.vlan_minimum }}"
+      vlan_maximum: "{{ item.vlan_maximum }}"
+    with_items:
+       - "{{ ome_vlan }}"
     tags: create_vlan

@@ -14,5 +14,5 @@
          username: "{{ ome_user }}"
          password: "{{ ome_pass }}"
          state: "absent"
-         name: "{{ item }}"
+         name: "{{ item.UserName }}"
     loop: "{{ ome_local_user }}"

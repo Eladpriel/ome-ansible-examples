@@ -7,7 +7,7 @@ ome_local_user:
 
 
 ome_vlan:
-  - Ansible-test
+        - { name: ansible-test, description: VLAN desc, type: General Purpose (Bronze), vlan_minimum: 40, vlan_maximum: 60 }
 
 port_groups:
   - GQDS813:port-group1/1/15
