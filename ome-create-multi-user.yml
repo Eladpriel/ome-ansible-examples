@@ -14,8 +14,9 @@
          username: "{{ ome_user }}"
          password: "{{ ome_pass }}"
          attributes:
-              UserName: "Peter"
-              Password: "1q2w3e4R%"
-              RoleId: "10"
-              Enabled: True
-
+              UserName: "{{ item.UserName }}"
+              Password: "{{ item.Password }}"
+              RoleId: "{{ item.RoleId }}"
+              Enabled: "{{ item.Enabled }}"
+    with_items: 
+      - "{{ ome_local_user }}" 

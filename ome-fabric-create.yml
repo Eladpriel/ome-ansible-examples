@@ -11,9 +11,9 @@
   tasks:
     - name: "Create a smart fabric"
       ome_smart_fabric:
-        hostname: "192.168.1.10"
-        username: "root"
-        password: "Calvin1@"
+        hostname: "{{ ome_endpoint }}"
+        username: "{{ ome_user }}"
+        password: "{{ ome_pass }}"
         state: present
         name: "fabric1"
         description: "fabric desc"
@@ -23,12 +23,11 @@
         override_LLDP_configuration: "Enabled"
       tags: create_smart_fabric
 
-  tasks:
   - name: "Create a Uplink"
     ome_smart_fabric_uplink:
-      hostname: "192.168.1.10"
-      username: "root"
-      password: "Calvin1@"
+      hostname: "{{ ome_endpoint }}"
+      username: "{{ ome_user }}"
+      password: "{{ ome_pass }}"
       state: "present"
       fabric_name: "MX9116n"
       name: "ansible-uplink"

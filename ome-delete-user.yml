@@ -10,8 +10,9 @@
   tasks:
   - name: delete existing user using name.
     ome_user:
-         hostname: "192.168.1.10"
-         username: "root"
-         password: "Calvin1@"
+         hostname: "{{ ome_endpoint }}"
+         username: "{{ ome_user }}"
+         password: "{{ ome_pass }}"
          state: "absent"
-         name: "elad"
+         name: "{{ item }}"
+    loop: "{{ ome_local_user }}"

@@ -1,0 +1,16 @@
+ome_user: root
+ome_pass: Calvin1@
+
+ome_local_user:
+        - { UserName: elad, Password: Calvin1@, RoleId: 10, Enabled: True }
+        - { UserName: ansible, Password: Calvin1@, RoleId: 10, Enabled: True }
+
+
+ome_vlan:
+  - Ansible-test
+
+port_groups:
+  - GQDS813:port-group1/1/15
+  - GQDS813:port-group1/1/16
+  - DQDS813:port-group1/1/15
+  - DQDS813:port-group1/1/16

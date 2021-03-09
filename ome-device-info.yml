@@ -1,0 +1,15 @@
+---
+- hosts: ome
+  connection: local
+  name: Dell OpenManage Ansible User service.
+  gather_facts: False
+
+  collections:
+    - dellemc.openmanage
+      
+  tasks:
+    - name: Retrieve basic inventory of all devices.
+      ome_device_info:
+        hostname: "{{ ome_endpoint }}"
+        username: "{{ ome_user }}"
+        password: "{{ ome_pass }}"

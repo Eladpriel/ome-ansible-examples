@@ -9,21 +9,23 @@
   
   tasks:
 
-    - name: Port breakout configuration.
+    - name: Revert to Hardware Default
       ome_network_port_breakout:
-        hostname: "192.168.1.10"
-        username: "root"
-        password: "Calvin1@"
-        target_port: "GQDS813:port-group1/1/13"
-        breakout_type: "4X10GE"
+        hostname: "{{ ome_endpoint }}"
+        username: "{{ ome_user }}"
+        password: "{{ ome_pass }}"
+        target_port: "{{ item }}"
+        breakout_type: "HardwareDefault"
+      loop: "{{ port_groups }}"
 
     - name: Port breakout configuration.
       ome_network_port_breakout:
-        hostname: "192.168.1.10"
-        username: "root"
-        password: "Calvin1@"
-        target_port: "GQDS813:port-group1/1/14"
+        hostname: "{{ ome_endpoint }}"
+        username: "{{ ome_user }}"
+        password: "{{ ome_pass }}"
+        target_port: "{{ item }}"
         breakout_type: "4X10GE"
+      loop: "{{ port_groups }}"
 
       tags:
         - port-config

@@ -10,9 +10,10 @@
   tasks:
   - name: "Delete a VLAN"
     ome_network_vlan:
-      hostname: "192.168.1.10"
-      username: "root"
-      password: "Calvin1@"
+      hostname: "{{ ome_endpoint }}"
+      username: "{{ ome_user }}"
+      password: "{{ ome_pass }}"
       state: "absent"
-      name: "Ansible-test"
+      name: "{{ item }}"
+    loop: "{{ ome_vlan }}"
     tags: delete_vlan
