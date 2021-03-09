@@ -18,5 +18,5 @@
       description: "VLAN desc"
       type: "General Purpose (Bronze)"
       vlan_minimum: 40
-      vlan_maximum: 40
+      vlan_maximum: 60
     tags: create_vlan

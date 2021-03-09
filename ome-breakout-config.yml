@@ -1,0 +1,29 @@
+---
+- hosts: ome
+  connection: local
+  name: Dell OpenManage Ansible smart fabric uplink configuration.
+  gather_facts: False
+
+  collections:
+    - dellemc.openmanage
+  
+  tasks:
+
+    - name: Port breakout configuration.
+      ome_network_port_breakout:
+        hostname: "192.168.1.10"
+        username: "root"
+        password: "Calvin1@"
+        target_port: "GQDS813:port-group1/1/13"
+        breakout_type: "4X10GE"
+
+    - name: Port breakout configuration.
+      ome_network_port_breakout:
+        hostname: "192.168.1.10"
+        username: "root"
+        password: "Calvin1@"
+        target_port: "GQDS813:port-group1/1/14"
+        breakout_type: "4X10GE"
+
+      tags:
+        - port-config

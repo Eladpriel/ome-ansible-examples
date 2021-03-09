@@ -1,0 +1,34 @@
+---
+- hosts: ome
+  connection: local
+  name: Dell OpenManage Ansible smart fabric uplink configuration.
+  gather_facts: False
+
+  collections:
+    - dellemc.openmanage
+      
+  tasks:
+  - name: "Create a Uplink"
+    ome_smart_fabric_uplink:
+      hostname: "192.168.1.10"
+      username: "root"
+      password: "Calvin1@"
+      state: "present"
+      fabric_name: "MX9116n"
+      name: "ansible-uplink"
+      description: "CREATED from ansible by elad"
+      uplink_type: "Ethernet"
+      ufd_enable: "Enabled"
+      primary_switch_service_tag: "DQDS813"
+      primary_switch_ports:
+        - ethernet1/1/43
+        - ethernet1/1/44
+      secondary_switch_service_tag: "GQDS813"
+      secondary_switch_ports:
+        - ethernet1/1/43
+        - ethernet1/1/44
+      tagged_networks:
+        - VLAN1
+        - VLAN1000
+      untagged_network: VLAN2
+    tags: create_uplink
