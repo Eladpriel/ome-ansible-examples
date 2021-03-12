@@ -3,6 +3,8 @@
   connection: local
   name: Dell OpenManage Ansible User service.
   gather_facts: False
+  vars_files:
+          - ome-secret.yml
 
   collections:
     - dellemc.openmanage

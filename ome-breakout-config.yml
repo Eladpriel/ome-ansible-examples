@@ -3,6 +3,8 @@
   connection: local
   name: Dell OpenManage Ansible smart fabric uplink configuration.
   gather_facts: False
+  vars_files:
+          - ome-secret.yml
 
   collections:
     - dellemc.openmanage
