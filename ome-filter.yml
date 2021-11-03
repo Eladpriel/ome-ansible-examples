@@ -1,0 +1,43 @@
+---
+- hosts: ome
+  connection: local
+  name: Dell OpenManage Ansible User service.
+  gather_facts: False 
+  vars_files:
+          - ome-secret.yml
+
+  collections:
+    - dellemc.openmanage
+      
+  tasks:
+    - name: Retrieve basic inventory of all devices.
+      ome_device_info:
+        hostname: "{{ ome_endpoint }}"
+        username: "{{ ome_user }}"
+        password: "{{ ome_pass }}"
+      register: all_devices
+
+    - name: show info
+      debug:
+        msg: "{{ all_devices }}"
+
+    - name: set chassis 1
+      set_fact:
+        chassis_1: '{{ all_devices.device_info.value | json_query(query) }}'
+      vars:
+        query: "[?DeviceManagement[0].NetworkAddress==`192.168.1.10`].DeviceServiceTag"
+
+    - name: set chassis 2
+      set_fact:
+        chassis_2: '{{ all_devices.device_info.value | json_query(query) }}'
+      vars:
+        query: "[?DeviceManagement[0].NetworkAddress==`192.168.1.20`].DeviceServiceTag"
+
+
+    - name: show service tags
+      debug:
+         msg: 
+         - "chassis 1 service {{ chassis_1 }}" 
+         - "chassis 2 service {{ chassis_2 }}"
+
+

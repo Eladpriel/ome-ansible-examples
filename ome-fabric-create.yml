@@ -20,8 +20,8 @@
         name: "fabric1"
         description: "fabric desc"
         fabric_design: "2xMX9116n_Fabric_Switching_Engines_in_different_chassis"
-        primary_switch_service_tag: "DQDS813"
-        secondary_switch_service_tag: "GQDS813"
+        primary_switch_service_tag: "{{ mx9116_a1 }}"
+        secondary_switch_service_tag: "{{ mx9116_a2 }}"
         override_LLDP_configuration: "Enabled"
       tags: create_smart_fabric
 
@@ -36,11 +36,11 @@
       description: "CREATED from ansible by elad"
       uplink_type: "Ethernet"
       ufd_enable: "Enabled"
-      primary_switch_service_tag: "DQDS813"
+      primary_switch_service_tag: "{{ mx9116_a1 }}"
       primary_switch_ports:
               - ethernet1/1/41:1
               - ethernet1/1/42:1
-      secondary_switch_service_tag: "GQDS813"
+      secondary_switch_service_tag: "{{ mx9116_a2 }}"
       secondary_switch_ports:
               - ethernet1/1/41:1
               - ethernet1/1/42:1

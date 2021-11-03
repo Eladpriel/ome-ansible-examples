@@ -1,0 +1,21 @@
+---
+- hosts: ome
+  connection: local
+  name: Dell OpenManage Ansible User service.
+  gather_facts: False
+  vars_files:
+          - ome-secret.yml
+
+  collections:
+    - dellemc.openmanage
+      
+  tasks:
+    - name: changing DNS.
+      ome_device_mgmt_network:
+        hostname: "{{ ome_endpoint }}"
+        username: "{{ ome_user }}"
+        password: "{{ ome_pass }}"
+        device_service_tag: 7QDS813
+        ipv4_configuration:
+                enable_ipv4: true
+                enable_dhcp: true

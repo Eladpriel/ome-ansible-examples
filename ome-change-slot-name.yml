@@ -1,0 +1,21 @@
+---
+- hosts: ome
+  connection: local
+  name: Dell OpenManage Ansible User service.
+  gather_facts: False
+  vars_files:
+          - ome-secret.yml
+
+  collections:
+    - dellemc.openmanage
+      
+  tasks:
+    - name: changing sled name.
+      ome_chassis_slots:
+        hostname: "{{ ome_endpoint }}"
+        username: "{{ ome_user }}"
+        password: "{{ ome_pass }}"
+        device_options:
+          - device_id: 10072
+            slot_name: elad_test
+
