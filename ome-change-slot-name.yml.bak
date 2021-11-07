@@ -19,16 +19,15 @@
 
     - name: set chassis 1
       set_fact:
-        chassis_1: "{{ all_devices.device_info.value | json_query(query) }}"
-
+        chassis_1: "{{ all_devices.device_info.value | json_query(query)  |  regex_replace('\\[|\\]|\\'','')}}"
       vars:
-        query: "[?DeviceManagement[0].NetworkAddress==`192.168.1.10`].DeviceServiceTag |[0]"  
+        query: "[?DeviceManagement[0].NetworkAddress==`192.168.1.10`].DeviceServiceTag"  
 
     - name: set chassis 2
       set_fact:
         chassis_2: '{{ all_devices.device_info.value | json_query(query) }}'
       vars:
-        query: "[?DeviceManagement[0].NetworkAddress==`192.168.1.20`].DeviceServiceTag |[0]"
+        query: "[?DeviceManagement[0].NetworkAddress==`192.168.1.20`].DeviceServiceTag"
 
 
     - name: show service tags
